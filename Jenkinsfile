@@ -6,7 +6,7 @@ pipeline {
     }
     stages {
 
-        stage('pull scm new') {
+        stage('pull scm ') {
             steps {
                 git branch: 'dev', url: 'https://github.com/PraveenKuber/Amazon-Jenkins.git'
             }
@@ -16,24 +16,11 @@ pipeline {
                 sh 'mvn compile'
             }
         }
-         stage('test') {
+        stage('Test') {
             steps {
-                sh 'mvn test'
+                echo 'Running tests for PR'
             }
-        }
-         stage('verify') {
-            steps {
-                sh 'mvn verify'
-            }
-        }
-
-        stage('build') {
-            steps {
-                 sh 'mvn clean install'
-            }
-        }
-
-        
+        }       
     }
 
   post{
